@@ -1,9 +1,11 @@
+import Dashboard from "../views/Dashboard";
+
 const { createBrowserRouter } = require("react-router-dom");
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <div>HOME</div>
+        element: <Dashboard/>
     },
     {
         path: '/login',
