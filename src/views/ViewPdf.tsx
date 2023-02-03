@@ -35,7 +35,6 @@ function ViewPdf() {
   useEffect(() => {
     let template: Template = getTemplate();
     try {
-      console.log(pdf);
       // const templateString = localStorage.getItem('template');
       const templateString = JSON.stringify(pdf);
       const templateJson = templateString
@@ -254,26 +253,32 @@ ${e}`);
   const appendSignaute = async () => {
     if (designer.current) {
       try {
-        const { data } = await axios.get('http://localhost:5001/view', {
-          responseType: 'blob',
-        });
+        // const { data } = await axios.get('http://localhost:5001/view', {
+        //   responseType: 'blob',
+        // });
 
-        const { data: img } = await axios.get(
-          'http://localhost:5001/img-signature',
-          {
-            responseType: 'blob',
-          }
+        // const { data: img } = await axios.get(
+        //   'http://localhost:5001/img-signature',
+        //   {
+        //     responseType: 'blob',
+        //   }
+        // );
+
+        // let imgDataUrl = '';
+        // blobToDataURL(img, (res: string) => {
+        //   imgDataUrl = res;
+        // });
+
+        const { data: imgDataUrl } = await axios.get(
+          'http://localhost:5001/img-signature'
         );
 
-        let imgDataUrl = '';
-        blobToDataURL(img, (res: string) => {
-          imgDataUrl = res;
-        });
+        const blob = new Blob(pdf.basePdf);
 
-        readFile(data, 'dataURL').then(async (basePdf) => {
+        readFile(blob, 'dataURL').then(async (basePdf) => {
           if (designer.current) {
             designer.current.updateTemplate(
-              Object.assign(cloneDeep(addSignature(data, imgDataUrl)), {
+              Object.assign(cloneDeep(addSignature(blob, imgDataUrl)), {
                 basePdf,
               })
             );
