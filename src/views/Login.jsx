@@ -49,70 +49,65 @@ export default function Login() {
               backgroundColor: "white",
               display: "flex",
               flexDirection: "column",
-              textAlign: "center",
-              justifyContent: "center",
               height: "50vh",
             }}
           >
-            <h2>SIGN in</h2>
-            <br />
+            <h2 style={{ textAlign: "center" }}>SIGN IN</h2>
             <br />
             <br />
             <p>Email:</p>
-            <br />
             <input
               type="text"
-              placeholder="Insert email here.."
+              placeholder="user@email.com"
               style={{
-                alignSelf: "center",
                 border: "solid",
                 borderRadius: 5,
                 borderColor: "black",
                 paddingLeft: 10,
-                width: "50%",
+                width: "100%",
                 height: 35,
               }}
             />
-            <br />
-            <br />
             <p>Password:</p>
-            <br />
             <input
               type="text"
-              placeholder="Insert password here.."
+              placeholder="Password"
               style={{
-                alignSelf: "center",
                 border: "solid",
                 borderRadius: 5,
                 borderColor: "black",
                 paddingLeft: 10,
-                width: "50%",
+                width: "100%",
                 height: 35,
               }}
             />
-            <br />
-            <br />
-            <br />
-            Don't have an Account?
-            <br />
-            <Link to="/user/register"> Register Here</Link>
-            <br />
-            <br />
-            <button
-              type="submit"
+            <div
               style={{
-                alignSelf: "center",
-                border: "solid",
-                borderColor: "black",
-                borderRadius: 5,
-                width: "20%",
-                height: 35,
-                backgroundColor: "red",
-                color: "white",
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "center",
               }}
             >
-              Login
-            </button>
+              <p>Don't have an Account?</p>
+              <Link to="/user/register" style={{ color: "blue" }}>
+                Register Here
+              </Link>
+              <button
+                type="submit"
+                style={{
+                  alignSelf: "center",
+                  border: "solid",
+                  borderColor: "white",
+                  borderRadius: 7,
+                  width: "20%",
+                  height: 35,
+                  backgroundColor: "red",
+                  color: "white",
+                }}
+              >
+                Login
+              </button>
+            </div>
           </form>
         </div>
       </body>
