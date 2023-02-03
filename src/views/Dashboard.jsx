@@ -4,11 +4,13 @@ import Sidebar from "../components/Sidebar";
 export default function Dashboard() {
   return (
     <>
-      <Navbar />
-      <div className="flex">
+      <section className="container flex w-full">
         <Sidebar />
-        <div>HELLO WORLD</div>
-      </div>
+        <Navbar />
+        <div className="ml-[240px] mt-[92px] w-full flex justify-center items-center">
+          HELLO WORLD
+        </div>
+      </section>
     </>
   );
 }

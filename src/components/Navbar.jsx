@@ -1,32 +1,20 @@
-import logo from  '../assets/img/logo-3.png'
+import UserPreview from "./UserPreview";
 
 export default function Navbar() {
-    return (
-        <>
-        <section className="border-b-theme-1 border-b-2 px-8 py-3 flex justify-between items-center shadow-sm text-theme-2 ">
-            <div className='w-32 cursor-pointer text-center'>
-                <img src={logo} alt="esignee_logo" />
-                <p className='text-xs font-semibold tracking-widest'>Digital Signature</p>
-            </div>
-            <div>
-                <ul className='flex gap-1 tracking-wide'>
-                    <li className='hover:bg-sky-50 px-4 py-2 rounded-xl cursor-pointer hover:font-semibold'>Dashboard</li>
-                    <li className='hover:bg-sky-50 px-4 py-2 rounded-xl cursor-pointer hover:font-semibold'>Organization</li>
-                    <li className='hover:bg-sky-50 px-4 py-2 rounded-xl cursor-pointer hover:font-semibold'>Contacts</li>
-                    <li className='hover:bg-sky-50 px-4 py-2 rounded-xl cursor-pointer hover:font-semibold'>Settings</li>
-                </ul>
-            </div>
-            <div className='flex items-center gap-2'>
-                <div className='w-9 h-9 rounded-full bg-theme-3 flex items-center justify-center text-white'>
-                    <p className='font-semibold'>JC</p>
-                </div>
-                <div>
-                    <p className='font-semibold tracking-wide'>John Claymore</p>
-                    <p className='text-xs'>Hacktiv 8</p>
-                </div>
-            </div>
-        </section>
+  return (
+    <>
+      <section className="flex justify-between items-center p-4 fixed left-[220px] right-0 m-4">
+        <div>
+          <p className="text-3xl font-semibold">Welcome Back, John</p>
+          <p>Here is the information about all your orders</p>
+        </div>
 
-        </>
-    )
+        <div className="flex items-center gap-4">
+          <span class="material-symbols-outlined">search</span>
+          <span class="material-symbols-outlined">notifications</span>
+          <UserPreview />
+        </div>
+      </section>
+    </>
+  );
 }
