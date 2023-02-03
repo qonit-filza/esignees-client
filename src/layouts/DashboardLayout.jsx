@@ -1,10 +1,11 @@
+import { Outlet } from "react-router"
 import Navbar from "../components/Navbar"
 
-export default function Dashboard() {
+export default function DashboardLayout() {
     return (
         <>
         <Navbar/>
-        <div>HELLO WORLD</div>
+        <Outlet/>
         </>
     )
 }
