@@ -14,10 +14,13 @@ import {
 import axios from 'axios';
 import React from 'react';
 import Navbar from '../components/Navbar';
+import { useSelector } from 'react-redux';
+import { tempppp } from '../helpers/template';
 
-function UploadPdf() {
+function ViewPdf() {
   const designerRef = useRef<HTMLDivElement | null>(null);
   const designer = useRef<Designer | null>(null);
+  const { pdf } = useSelector((state) => state);
 
   function customRead(input: any) {
     const fr = new FileReader();
@@ -28,15 +31,16 @@ function UploadPdf() {
     });
   }
 
+  //! original hooks
   useEffect(() => {
     let template: Template = getTemplate();
-    // console.log(template);
     try {
-      const templateString = localStorage.getItem('template');
+      console.log(pdf);
+      // const templateString = localStorage.getItem('template');
+      const templateString = JSON.stringify(pdf);
       const templateJson = templateString
         ? JSON.parse(templateString)
         : getTemplate();
-      // console.log(templateJson);
       checkTemplate(templateJson);
       template = templateJson as Template;
     } catch {
@@ -48,18 +52,32 @@ function UploadPdf() {
         designer.current = new Designer({
           domContainer: designerRef.current,
           template,
-          // options: { font },
         });
         designer.current.onSaveTemplate(onSaveTemplate);
       }
     });
 
-    return () => {
-      if (designer.current) {
-        designer.current.destroy();
-      }
-    };
+    // return () => {
+    //   if (designer.current) {
+    //     designer.current.destroy();
+    //   }
+    // };
   }, [designerRef]);
+
+  // useEffect(() => {
+  //   //
+  //   console.log(pdf);
+
+  //   readFile(pdf, 'dataURL').then(async (basePdf) => {
+  //     if (designer.current) {
+  //       designer.current.updateTemplate(
+  //         Object.assign(cloneDeep(renderPdf(pdf)), {
+  //           basePdf,
+  //         })
+  //       );
+  //     }
+  //   });
+  // }, [designerRef]);
 
   const onChangeBasePDF = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target && e.target.files) {
@@ -269,7 +287,7 @@ ${e}`);
 
   return (
     <div>
-      {/* <header
+      <header
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -298,16 +316,16 @@ ${e}`);
         <span style={{ margin: '0 1rem' }}>/</span>
         <button onClick={onDownloadTemplate}>Download Template</button>
         <button onClick={cleanRenderServer}>Render server</button>
-        <button onClick={appendSignaute}>add Signature</button> */}
-      {/* <button onClick={cleanRender}>Clean render</button> */}
-      {/* <span style={{ margin: '0 1rem' }}>/</span>
+        <button onClick={appendSignaute}>add Signature</button>
+        {/* <button onClick={cleanRender}>Clean render</button> */}
+        <span style={{ margin: '0 1rem' }}>/</span>
         <button onClick={() => onSaveTemplate()}>Save Template</button>
         <span style={{ margin: '0 1rem' }}>/</span>
         <button onClick={onResetTemplate}>Reset Template</button>
         <span style={{ margin: '0 1rem' }}>/</span>
         <button onClick={onGeneratePDF}>Generate PDF</button>
         <button onClick={onSendPdf}>Send PDF</button>
-      </header> */}
+      </header>
       <Navbar />
 
       <div className="m-14" ref={designerRef} />
@@ -315,4 +333,4 @@ ${e}`);
   );
 }
 
-export default UploadPdf;
+export default ViewPdf;

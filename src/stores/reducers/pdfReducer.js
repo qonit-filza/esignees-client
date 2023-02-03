@@ -1,12 +1,16 @@
 const initialState = {
-  pdf: '',
+  pdf: {},
 };
 
 const pdfReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'pdf/setPdf':
       return {
-        pdf: action.payload,
+        ...initialState,
+        pdf: {
+          schemas: [],
+          basePdf: action.payload,
+        },
       };
     default:
       return state;

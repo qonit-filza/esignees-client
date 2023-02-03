@@ -1,53 +1,54 @@
-import Dashboard from "../views/Dashboard";
-import UploadPdf from "../views/UploadPdf.tsx";
-import Home from "../views/LandingPage";
-import Register from "../views/Register";
-import Login from "../views/Login";
-import AdminReg from "../views/adminRegister";
-import AdminLog from "../views/adminLogin";
+import Dashboard from '../views/Dashboard';
+import ViewPdf from '../views/ViewPdf.tsx';
+import Home from '../views/LandingPage';
+import Register from '../views/Register';
+import Login from '../views/Login';
+import AdminReg from '../views/adminRegister';
+import AdminLog from '../views/adminLogin';
+import UploadPdf from '../views/UploadPdf';
 
-const { createBrowserRouter } = require("react-router-dom");
+const { createBrowserRouter } = require('react-router-dom');
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Dashboard />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <div>LOGIN</div>,
   },
   {
-    path: "/home",
+    path: '/home',
     element: <Home />,
   },
   {
-    path: "/user/register",
+    path: '/user/register',
     element: <Register />,
   },
   {
-    path: "/user/login",
+    path: '/user/login',
     element: <Login />,
   },
   {
-    path: "/admin/register",
+    path: '/admin/register',
     element: <AdminReg />,
   },
   {
-    path: "/admin/login",
+    path: '/admin/login',
     element: <AdminLog />,
   },
 
   {
-    path: "/upload",
+    path: '/upload',
     element: <UploadPdf />,
   },
   {
-    path: "/render",
-    element: <></>,
+    path: '/render',
+    element: <ViewPdf />,
   },
   {
-    path: "/send",
+    path: '/send',
     element: <></>,
   },
 ]);
